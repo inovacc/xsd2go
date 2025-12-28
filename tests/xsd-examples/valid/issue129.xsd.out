@@ -6,14 +6,12 @@ import (
 	"encoding/xml"
 )
 
-// Element
 type List struct {
 	XMLName xml.Name `xml:"List,omitempty"`
 
 	Ccc []string `xml:",any"`
 }
 
-// Element
 type List1 struct {
 	XMLName xml.Name `xml:"List,omitempty"`
 

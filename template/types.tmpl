@@ -14,22 +14,20 @@ import (
 
 {{range .ExportableElements }}
   {{- if .ContainsDocumentation }}
-  // {{ .GoName }}: {{ .Documentation }}
-  {{- else}}
-  // Element
-  {{- end}}
+// {{ .GoName }} {{ .Documentation }}
+{{- end}}
   type {{ .GoName }} struct {
     XMLName xml.Name `xml:"{{.Name}}{{.Modifiers}}"`
     {{ range .Attributes }}
         {{- if .ContainsDocumentation }}
-        // {{ .GoName }}: {{ .Documentation }}
+        // {{ .GoName }} {{ .Documentation }}
         {{- end}}
         {{ .GoName }} {{.GoForeignModule}}{{.GoType}} `xml:"{{.XmlName}},{{.Modifiers}}"`
     {{end }}
 
     {{ range .Elements }}
       {{- if .ContainsDocumentation }}
-      // {{ .GoName }}: {{ .Documentation }}
+      // {{ .GoName }} {{ .Documentation }}
       {{- end}}
       {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.XmlName}}{{.Modifiers}}"`
     {{ end }}
@@ -46,7 +44,7 @@ import (
 {{range .ExportableComplexTypes }}
 
   {{- if .ContainsDocumentation }}
-  // {{ .GoName }}: {{ .Documentation }}
+  // {{ .GoName }} {{ .Documentation }}
   {{- end}}
   type {{ .GoName }} struct {
   {{- if not .HasXmlNameAttribute }}
@@ -54,14 +52,14 @@ import (
   {{- end}}
   {{ range .Attributes }}
       {{- if .ContainsDocumentation }}
-      // {{ .GoName }}: {{ .Documentation }}
+      // {{ .GoName }} {{ .Documentation }}
       {{- end}}
       {{ .GoName }} {{.GoForeignModule}}{{.GoType}} `xml:"{{.XmlName}},{{.Modifiers}}"`
   {{end }}
 
   {{ range .Elements }}
       {{- if .ContainsDocumentation }}
-      // {{ .GoName }}: {{ .Documentation }}
+      // {{ .GoName }} {{ .Documentation }}
       {{- end}}
     {{ .GoFieldName}} {{.GoMemLayout}}{{.GoForeignModule}}{{ .GoTypeName }} `xml:"{{.XmlName}}{{.Modifiers}}"`
   {{end}}
@@ -78,7 +76,7 @@ import (
 // XSD SimpleType declarations
 {{range .ExportableSimpleTypes }}
   {{- if .ContainsDocumentation }}
-  // {{ .GoName }}: {{ .Documentation }}
+  // {{ .GoName }} {{ .Documentation }}
   {{- end}}
   type {{ .GoName }} {{ .GoTypeName }}
 

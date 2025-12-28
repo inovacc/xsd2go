@@ -64,16 +64,16 @@ func (ws *Workspace) loadXsd(xsdPath string, shouldBeInlined bool) (*Schema, err
 			return nil, err
 		}
 
-		isch := si.IncludedSchema
-		schema.Imports = append(isch.Imports, schema.Imports...)
-		schema.Elements = append(isch.Elements, schema.Elements...)
-		schema.Attributes = append(isch.Attributes, schema.Attributes...)
-		schema.AttributeGroups = append(isch.AttributeGroups, schema.AttributeGroups...)
-		schema.ComplexTypes = append(isch.ComplexTypes, schema.ComplexTypes...)
-		schema.SimpleTypes = append(isch.SimpleTypes, schema.SimpleTypes...)
+		importedSchema := si.IncludedSchema
+		schema.Imports = append(importedSchema.Imports, schema.Imports...)
+		schema.Elements = append(importedSchema.Elements, schema.Elements...)
+		schema.Attributes = append(importedSchema.Attributes, schema.Attributes...)
+		schema.AttributeGroups = append(importedSchema.AttributeGroups, schema.AttributeGroups...)
+		schema.ComplexTypes = append(importedSchema.ComplexTypes, schema.ComplexTypes...)
+		schema.SimpleTypes = append(importedSchema.SimpleTypes, schema.SimpleTypes...)
 
-		schema.inlinedElements = append(isch.inlinedElements, schema.inlinedElements...)
-		maps.Copy(schema.importedModules, isch.importedModules)
+		schema.inlinedElements = append(importedSchema.inlinedElements, schema.inlinedElements...)
+		maps.Copy(schema.importedModules, importedSchema.importedModules)
 	}
 
 	for idx := range schema.Imports {

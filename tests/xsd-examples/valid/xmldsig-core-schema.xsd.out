@@ -6,7 +6,6 @@ import (
 	"encoding/xml"
 )
 
-// Element
 type Signature struct {
 	XMLName xml.Name `xml:"Signature"`
 
@@ -21,7 +20,6 @@ type Signature struct {
 	Object []ObjectType `xml:"Object,omitempty"`
 }
 
-// Element
 type SignatureValue struct {
 	XMLName xml.Name `xml:"SignatureValue"`
 
@@ -30,7 +28,6 @@ type SignatureValue struct {
 	Text string `xml:",chardata"`
 }
 
-// Element
 type SignedInfo struct {
 	XMLName xml.Name `xml:"SignedInfo"`
 
@@ -43,14 +40,12 @@ type SignedInfo struct {
 	Reference []ReferenceType `xml:"Reference"`
 }
 
-// Element
 type CanonicalizationMethod struct {
 	XMLName xml.Name `xml:"CanonicalizationMethod"`
 
 	Algorithm string `xml:"Algorithm,attr"`
 }
 
-// Element
 type SignatureMethod struct {
 	XMLName xml.Name `xml:"SignatureMethod"`
 
@@ -59,7 +54,6 @@ type SignatureMethod struct {
 	HmacoutputLength *HmacoutputLengthType `xml:",any,omitempty"`
 }
 
-// Element
 type Reference struct {
 	XMLName xml.Name `xml:"Reference"`
 
@@ -76,14 +70,12 @@ type Reference struct {
 	DigestValue DigestValueType `xml:"DigestValue"`
 }
 
-// Element
 type Transforms struct {
 	XMLName xml.Name `xml:"Transforms"`
 
 	Transform []TransformType `xml:",any"`
 }
 
-// Element
 type Transform struct {
 	XMLName xml.Name `xml:"Transform"`
 
@@ -92,21 +84,18 @@ type Transform struct {
 	Xpath []string `xml:"XPath,omitempty"`
 }
 
-// Element
 type DigestMethod struct {
 	XMLName xml.Name `xml:"DigestMethod"`
 
 	Algorithm string `xml:"Algorithm,attr"`
 }
 
-// Element
 type DigestValue struct {
 	XMLName xml.Name `xml:"DigestValue"`
 
 	Text string `xml:",chardata"`
 }
 
-// Element
 type KeyInfo struct {
 	XMLName xml.Name `xml:"KeyInfo"`
 
@@ -127,21 +116,18 @@ type KeyInfo struct {
 	MgmtData []string `xml:"MgmtData,omitempty"`
 }
 
-// Element
 type KeyName struct {
 	XMLName xml.Name `xml:"KeyName"`
 
 	Text string `xml:",chardata"`
 }
 
-// Element
 type MgmtData struct {
 	XMLName xml.Name `xml:"MgmtData"`
 
 	Text string `xml:",chardata"`
 }
 
-// Element
 type KeyValue struct {
 	XMLName xml.Name `xml:"KeyValue"`
 
@@ -150,7 +136,6 @@ type KeyValue struct {
 	RsakeyValue *RsakeyValueType `xml:"RSAKeyValue,omitempty"`
 }
 
-// Element
 type RetrievalMethod struct {
 	XMLName xml.Name `xml:"RetrievalMethod"`
 
@@ -161,7 +146,6 @@ type RetrievalMethod struct {
 	Transforms *TransformsType `xml:",any,omitempty"`
 }
 
-// Element
 type X509Data struct {
 	XMLName xml.Name `xml:"X509Data"`
 
@@ -176,7 +160,6 @@ type X509Data struct {
 	X509Crl string `xml:"X509CRL,omitempty"`
 }
 
-// Element
 type Pgpdata struct {
 	XMLName xml.Name `xml:"PGPData"`
 
@@ -185,14 +168,12 @@ type Pgpdata struct {
 	PgpkeyPacket string `xml:"PGPKeyPacket,omitempty"`
 }
 
-// Element
 type Spkidata struct {
 	XMLName xml.Name `xml:"SPKIData"`
 
 	Spkisexp string `xml:",any"`
 }
 
-// Element
 type Object struct {
 	XMLName xml.Name `xml:"Object"`
 
@@ -203,7 +184,6 @@ type Object struct {
 	Encoding string `xml:"Encoding,attr,omitempty"`
 }
 
-// Element
 type Manifest struct {
 	XMLName xml.Name `xml:"Manifest"`
 
@@ -212,7 +192,6 @@ type Manifest struct {
 	Reference []ReferenceType `xml:",any"`
 }
 
-// Element
 type SignatureProperties struct {
 	XMLName xml.Name `xml:"SignatureProperties"`
 
@@ -221,7 +200,6 @@ type SignatureProperties struct {
 	SignatureProperty []SignaturePropertyType `xml:",any"`
 }
 
-// Element
 type SignatureProperty struct {
 	XMLName xml.Name `xml:"SignatureProperty"`
 
@@ -230,7 +208,6 @@ type SignatureProperty struct {
 	Id string `xml:"Id,attr,omitempty"`
 }
 
-// Element
 type DsakeyValue struct {
 	XMLName xml.Name `xml:"DSAKeyValue"`
 
@@ -241,7 +218,6 @@ type DsakeyValue struct {
 	J *CryptoBinary `xml:"J,omitempty"`
 }
 
-// Element
 type RsakeyValue struct {
 	XMLName xml.Name `xml:"RSAKeyValue"`
 

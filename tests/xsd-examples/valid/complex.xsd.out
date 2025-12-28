@@ -6,7 +6,6 @@ import (
 	"encoding/xml"
 )
 
-// Element
 type Myelement struct {
 	XMLName xml.Name `xml:"myelement"`
 

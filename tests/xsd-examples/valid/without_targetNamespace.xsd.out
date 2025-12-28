@@ -6,14 +6,12 @@ import (
 	"encoding/xml"
 )
 
-// Element
 type Name struct {
 	XMLName xml.Name `xml:"name"`
 
 	Text string `xml:",chardata"`
 }
 
-// Element
 type Referencingthename struct {
 	XMLName xml.Name `xml:"referencingthename"`
 

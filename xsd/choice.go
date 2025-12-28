@@ -31,7 +31,7 @@ func (c *Choice) compile(sch *Schema, parentElement *Element) {
 	}
 
 	c.allElements = c.ElementList
-	inheritedElements := []Element{}
+	var inheritedElements []Element
 
 	for idx := range c.Sequences {
 		el := &c.Sequences[idx]

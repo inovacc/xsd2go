@@ -6,7 +6,6 @@ import (
 	"encoding/xml"
 )
 
-// Element
 type Myelement struct {
 	XMLName xml.Name `xml:"myelement"`
 
@@ -15,7 +14,7 @@ type Myelement struct {
 
 // XSD ComplexType declarations
 
-// MyElementType: Documentation with a character from ISO-8859-1 encoding: ñ
+// MyElementType Documentation with a character from ISO-8859-1 encoding: ñ
 type MyElementType struct {
 	XMLName xml.Name
 
