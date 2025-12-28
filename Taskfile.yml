@@ -49,6 +49,15 @@ tasks:
       - go tool cover -html={{.COVERAGE_FILE}} -o coverage.html
       - echo "Coverage report generated at coverage.html"
 
+  test:cover:
+    desc: Run tests and show coverage percentage
+    cmds:
+      - go test -coverprofile={{.COVERAGE_FILE}} ./...
+      - cmd: go tool cover -func={{.COVERAGE_FILE}} | findstr "total:"
+        platforms: [ windows ]
+      - cmd: go tool cover -func={{.COVERAGE_FILE}} | grep "total:"
+        platforms: [ linux, darwin ]
+
   test:unit:
     desc: Run unit tests only (skip integration)
     cmds:

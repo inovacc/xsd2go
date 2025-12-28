@@ -3,8 +3,8 @@ package xsd2go
 import (
 	"fmt"
 
-	"github.com/inovacc/xsd2go/template"
-	"github.com/inovacc/xsd2go/xsd"
+	"github.com/inovacc/xsd2go/pkg/template"
+	"github.com/inovacc/xsd2go/pkg/xsd"
 )
 
 func Convert(xsdPath, goModule, outputDir string, xmlnsOverrides []string) error {

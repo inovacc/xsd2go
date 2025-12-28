@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/inovacc/xsd2go/xsd"
+	"github.com/inovacc/xsd2go/pkg/xsd"
 )
 
 //go:embed types.tmpl

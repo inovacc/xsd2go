@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/inovacc/xsd2go/xsd2go"
+	"github.com/inovacc/xsd2go/pkg/xsd2go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
