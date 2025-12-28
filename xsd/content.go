@@ -8,7 +8,7 @@ type GenericContent interface {
 	Attributes() []Attribute
 	Elements() []Element
 	ContainsText() bool
-	compile(*Schema, *Element)
+	compile(sch *Schema, el *Element)
 }
 type SimpleContent struct {
 	XMLName     xml.Name     `xml:"http://www.w3.org/2001/XMLSchema simpleContent"`

@@ -31,6 +31,7 @@ func (c *Choice) compile(sch *Schema, parentElement *Element) {
 	}
 
 	c.allElements = c.ElementList
+
 	var inheritedElements []Element
 
 	for idx := range c.Sequences {
@@ -50,7 +51,7 @@ func (c *Choice) compile(sch *Schema, parentElement *Element) {
 		}
 	}
 	// deduplicate elements that represent duplicate within xsd:choice/xsd:sequence structure
-	c.allElements = append(c.ElementList, deduplicateElements(inheritedElements)...)
+	c.allElements = append(c.allElements, deduplicateElements(inheritedElements)...)
 }
 
 func (c *Choice) Elements() []Element {

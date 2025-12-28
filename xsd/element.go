@@ -93,15 +93,16 @@ func (e *Element) GoMemLayout() string {
 }
 
 func (e *Element) GoTypeName() string {
-	if e.Type != "" {
+	switch {
+	case e.Type != "":
 		return e.typ.GoName()
-	} else if e.Ref != "" {
+	case e.Ref != "":
 		return e.refElm.GoTypeName()
-	} else if e.isPlainString() {
+	case e.isPlainString():
 		return "string"
+	default:
+		return e.GoName()
 	}
-
-	return e.GoName()
 }
 
 func (e *Element) GoForeignModule() string {
@@ -170,7 +171,8 @@ func (e *Element) isArray() bool {
 
 func (e *Element) compile(s *Schema, parentElement *Element) {
 	e.schema = s
-	if e.ComplexType != nil {
+	switch {
+	case e.ComplexType != nil:
 		e.typ = e.ComplexType
 		if e.SimpleType != nil {
 			panic("Not implemented: xsd:element " + e.Name + " defines ./xsd:simpleType and ./xsd:complexType together")
@@ -179,19 +181,19 @@ func (e *Element) compile(s *Schema, parentElement *Element) {
 		}
 
 		e.typ.compile(s, e)
-	} else if e.SimpleType != nil {
+	case e.SimpleType != nil:
 		e.typ = e.SimpleType
 		if e.Type != "" {
 			panic("Not implemented: xsd:element " + e.Name + " defines ./@type= and ./xsd:simpleType together")
 		}
 
 		e.typ.compile(s, e)
-	} else if e.Type != "" {
+	case e.Type != "":
 		e.typ = e.schema.findReferencedType(e.Type)
 		if e.typ == nil {
 			panic("Cannot resolve type reference: " + string(e.Type))
 		}
-	} else if e.Ref != "" {
+	case e.Ref != "":
 		e.refElm = e.schema.findReferencedElement(e.Ref)
 		if e.refElm == nil {
 			panic("Cannot resolve element reference: " + e.Ref)

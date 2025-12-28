@@ -39,8 +39,6 @@ func (ws *Workspace) loadXsd(xsdPath string, shouldBeInlined bool) (*Schema, err
 		return cached, nil
 	}
 
-	fmt.Println("\tParsing:", xsdPath)
-
 	schema, err := ReadSchemaFromFile(xsdPath)
 	if err != nil {
 		return nil, err

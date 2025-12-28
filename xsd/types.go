@@ -13,7 +13,7 @@ type Type interface {
 	Attributes() []Attribute
 	Elements() []Element
 	ContainsText() bool
-	compile(*Schema, *Element)
+	compile(sch *Schema, el *Element)
 }
 
 func injectSchemaIntoAttributes(schema *Schema, intermAttributes []Attribute) []Attribute {
@@ -92,17 +92,18 @@ func (ct *ComplexType) Documentation() string {
 }
 
 func (ct *ComplexType) Elements() []Element {
-	if ct.Sequence != nil {
+	switch {
+	case ct.Sequence != nil:
 		return setXmlNameAnyForSingleElements(ct.Sequence.Elements())
-	} else if ct.SequenceAll != nil {
+	case ct.SequenceAll != nil:
 		return setXmlNameAnyForSingleElements(ct.SequenceAll.Elements())
-	} else if ct.content != nil {
+	case ct.content != nil:
 		return setXmlNameAnyForSingleElements(ct.content.Elements())
-	} else if ct.Choice != nil {
+	case ct.Choice != nil:
 		return ct.Choice.Elements()
+	default:
+		return []Element{}
 	}
-
-	return []Element{}
 }
 
 func (ct *ComplexType) GoName() string {

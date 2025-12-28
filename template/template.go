@@ -30,13 +30,15 @@ func GenerateTypes(schema *xsd.Schema, outputDir string) error {
 	}
 
 	goFile := filepath.Clean(filepath.Join(dir, "models.go"))
-	fmt.Printf("\tGenerating '%s'\n", goFile)
 
 	f, err := os.Create(goFile)
 	if err != nil {
 		return fmt.Errorf("could not create '%s': %w", goFile, err)
 	}
-	defer f.Close()
+
+	defer func() {
+		_ = f.Close()
+	}()
 
 	var buf bytes.Buffer
 	if err := t.Execute(&buf, schema); err != nil {

@@ -37,7 +37,7 @@ func (a *Attribute) Documentation() string {
 	return a.Annotation.Documentations[0].GetContent()
 }
 
-// Public Go Name of this struct item.
+// GoName returns the public Go Name of this struct item.
 func (a *Attribute) GoName() string {
 	name := a.Name
 	if a.Name == "" {

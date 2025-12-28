@@ -387,7 +387,8 @@ type Import struct {
 	XMLName        xml.Name `xml:"http://www.w3.org/2001/XMLSchema import"`
 	Namespace      string   `xml:"namespace,attr"`
 	SchemaLocation string   `xml:"schemaLocation,attr"`
-	ImportedSchema *Schema  `xml:"-"`
+	//nolint:staticcheck
+	ImportedSchema *Schema `xml:"-"`
 }
 
 func (i *Import) load(ws *Workspace, baseDir string) (err error) {
@@ -402,7 +403,8 @@ type Include struct {
 	XMLName        xml.Name `xml:"http://www.w3.org/2001/XMLSchema include"`
 	Namespace      string   `xml:"namespace,attr"`
 	SchemaLocation string   `xml:"schemaLocation,attr"`
-	IncludedSchema *Schema  `xml:"-"`
+	//nolint:staticcheck
+	IncludedSchema *Schema `xml:"-"`
 }
 
 func (i *Include) load(ws *Workspace, baseDir string) (err error) {
