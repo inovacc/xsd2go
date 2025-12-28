@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gocomply/xsd2go/pkg/xsd2go"
+	"github.com/inovacc/xsd2go/xsd2go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -53,8 +53,10 @@ func locateGeneratedFile(outputDir string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	if len(golangFiles) != 1 {
 		return "", fmt.Errorf("Expected to find single generated file but found %s", golangFiles)
 	}
+
 	return golangFiles[0], nil
 }

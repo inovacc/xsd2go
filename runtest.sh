@@ -1,9 +1,0 @@
-#!/bin/bash
-set -x -e -o pipefail
-
-go test ./...
-go vet ./...
-go fmt ./...
-
-go build ./cli/gocomply_xsd2go
-# ./.github/workflows/scap.sh

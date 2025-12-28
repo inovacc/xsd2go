@@ -2,9 +2,9 @@ name: SCAP Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   scap-integration:
@@ -28,8 +28,8 @@ jobs:
     - name: Get Go dependencies
       run: go get -v -t -d ./...
 
-    - name: Build gocomply_xsd2go
-      run: go build -v ./cli/gocomply_xsd2go
+    - name: Build inovacc_xsd2go
+      run: go build -v ./cli/inovacc_xsd2go
 
     - name: Integrate
       run: |
